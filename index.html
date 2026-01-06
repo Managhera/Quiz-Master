@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Master</title>
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cuprum:wght@500;600;700&family=Roboto:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+
+  <body>
+    <!-- 
+    - #HEADER
+  -->
+
+    <header class="header" data-header>
+      <div class="container">
+        <a href="#" class="logo">QuizMaster</a>
+
+        <nav class="navbar" data-navbar>
+          <div class="wrapper">
+            <a href="#" class="logo">QuizMaster</a>
+
+            <button
+              class="nav-close-btn"
+              aria-label="close menu"
+              data-nav-toggler
+            >
+              <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+            </button>
+          </div>
+
+          <ul class="navbar-list">
+            <li>
+              <a href="#home" class="navbar-link" data-nav-link>Home</a>
+            </li>
+
+            <li>
+              <a href="#about" class="navbar-link" data-nav-link>About Quiz</a>
+            </li>
+
+            <li>
+              <a href="#categories" class="navbar-link" data-nav-link
+                >Quiz Categories</a
+              >
+            </li>
+
+            <li>
+              <a href="#features" class="navbar-link" data-nav-link>Features</a>
+            </li>
+
+            <li>
+              <a href="#leaderboard" class="navbar-link" data-nav-link
+                >Leaderboard</a
+              >
+            </li>
+
+            <li>
+              <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+        <button class="nav-open-btn" aria-label="open menu" data-nav-toggler>
+          <ion-icon name="menu-outline" aria-hidden="true"></ion-icon>
+        </button>
+
+        <a href="./app/login.html" class="btn-outline">Login</a>
+
+        <div class="overlay" data-nav-toggler data-overlay></div>
+      </div>
+    </header>
+
+    <main>
+      <article>
+        <!-- 
+        - #HERO
+      -->
+
+        <section class="section hero" id="home" aria-label="hero">
+          <div class="container">
+            <div class="hero-content">
+              <p class="hero-subtitle has-before">Welcome to QuizMaster</p>
+
+              <h1 class="h1 hero-title">
+                Test Your Knowledge with Smart Quizzes
+              </h1>
+
+              <p class="hero-text">
+                Practice MCQs, prepare for exams, track your scores, and compete
+                with other students using our interactive quiz platform.
+              </p>
+
+              <div class="btn-group">
+                <a href="./app/quiz.html" class="btn btn-primary">Start Quiz</a>
+
+                <!-- <button class="flex-btn">
+                  <div class="btn-icon">
+                    <ion-icon name="play" aria-hidden="true"></ion-icon>
+                  </div>
+                  <span class="span">How It Works</span>
+                </button> -->
+              </div>
+            </div>
+
+            <figure
+              class="hero-banner has-before img-holder"
+              style="--width: 650; --height: 650"
+            >
+              <img
+                src="./assets/dash.jpg"
+                width="650"
+                height="650"
+                alt="online quiz platform"
+                class="img-cover"
+              />
+            </figure>
+          </div>
+        </section>
+
+        <!-- 
+        - #ABOUT
+      -->
+
+        <section class="section about" id="about" aria-label="about">
+          <div class="container">
+            <figure class="about-banner">
+              <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3"
+                width="802"
+                height="654"
+                loading="lazy"
+                alt="online quiz learning"
+                class="w-100"
+              />
+            </figure>
+
+            <div class="about-content">
+              <h2 class="h2-sm section-title">
+                Learn, Practice & Succeed with Smart Quizzes
+              </h2>
+
+              <p class="section-text">
+                Our quiz platform helps students prepare for exams using
+                interactive MCQs, instant results, and performance tracking in a
+                simple and user-friendly way.
+              </p>
+
+              <ul class="about-list">
+                <li class="has-before">Topic-wise MCQs for exam preparation</li>
+
+                <li class="has-before">
+                  Instant score & detailed explanations
+                </li>
+
+                <li class="has-before">
+                  Practice anytime on mobile or desktop
+                </li>
+              </ul>
+
+              <div class="btn-group">
+                <a href="./app/quiz.html" class="btn btn-primary"
+                  >Explore Quizzes</a
+                >
+
+                <button class="flex-btn">
+                  <div class="btn-icon">
+                    <ion-icon
+                      name="medal-outline"
+                      aria-hidden="true"
+                    ></ion-icon>
+                  </div>
+
+                  <span class="span">Trusted by Students</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 
+        - #SERVICE
+      -->
+
+        <section class="section service" id="services" aria-label="service">
+          <div class="container">
+            <p class="section-subtitle text-center">-What We Offer-</p>
+
+            <h2 class="h2 section-title text-center">
+              Our Quiz Platform Features
+            </h2>
+
+            <p class="section-text text-center">
+              Learn, practice, and test your knowledge with interactive quizzes,
+              real-time results, and smart performance tracking.
+            </p>
+
+            <ul class="grid-list">
+              <li>
+                <div class="service-card has-after">
+                  <figure class="card-icon">
+                    <img
+                      src="./assets/img/img1.jpg"
+                      width="140"
+                      height="140"
+                      loading="lazy"
+                      alt="MCQ Based Quizzes"
+                      class="img"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <h3 class="h3 card-title">MCQ Based Quizzes</h3>
+
+                    <p class="card-text">
+                      Practice topic-wise and exam-oriented multiple choice
+                      questions with instant feedback.
+                    </p>
+
+                    <a href="#" class="btn-link">
+                      <span class="span">Read More</span>
+                      <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </a>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card has-after">
+                  <figure class="card-icon">
+                    <img
+                      src="./assets/img/img2.jpg"
+                      width="140"
+                      height="140"
+                      loading="lazy"
+                      alt="Timer Based Test"
+                      class="img"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <h3 class="h3 card-title">Timer Based Tests</h3>
+
+                    <p class="card-text">
+                      Attempt quizzes with countdown timers to simulate real
+                      exam environments.
+                    </p>
+
+                    <a href="#" class="btn-link">
+                      <span class="span">Read More</span>
+                      <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </a>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card has-after">
+                  <figure class="card-icon">
+                    <img
+                      src="./assets/img/img3.jpg"
+                      width="140"
+                      height="140"
+                      loading="lazy"
+                      alt="Instant Results"
+                      class="img"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <h3 class="h3 card-title">Instant Results</h3>
+
+                    <p class="card-text">
+                      Get immediate quiz results with correct answers and score
+                      analysis.
+                    </p>
+
+                    <a href="#" class="btn-link">
+                      <span class="span">Read More</span>
+                      <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </a>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="service-card has-after">
+                  <figure class="card-icon">
+                    <img
+                      src="./assets/img/img4.png"
+                      width="140"
+                      height="140"
+                      loading="lazy"
+                      alt="Progress Tracking"
+                      class="img"
+                    />
+                  </figure>
+
+                  <div class="card-content">
+                    <h3 class="h3 card-title">Progress Tracking</h3>
+
+                    <p class="card-text">
+                      Track your performance, accuracy, and improvement over
+                      time.
+                    </p>
+
+                    <a href="#" class="btn-link">
+                      <span class="span">Read More</span>
+                      <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <a href="./app/quiz.html" class="btn btn-primary">Start Quiz Now</a>
+          </div>
+        </section>
+
+        <!-- 
+        - #FEATURES
+      -->
+
+        <section class="section features" id="features" aria-label="features">
+          <div class="container">
+            <p class="section-subtitle text-center">-Why Choose Us-</p>
+
+            <h2 class="h2 section-title text-center">
+              Why Students Choose Our Quiz Platform
+            </h2>
+
+            <p class="section-text text-center">
+              Designed for students, learners, and professionals to practice,
+              evaluate, and improve skills with smart assessment tools.
+            </p>
+
+            <ul class="grid-list">
+              <li>
+                <div class="features-card">
+                  <data class="card-number" value="01">01</data>
+
+                  <h3 class="h3 card-title">Free Practice Quizzes</h3>
+
+                  <p class="card-text">
+                    Access topic-wise quizzes for free and improve your
+                    fundamentals.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="features-card">
+                  <data class="card-number" value="02">02</data>
+
+                  <h3 class="h3 card-title">Exam-Oriented Questions</h3>
+
+                  <p class="card-text">
+                    Questions prepared according to real exam patterns and
+                    syllabus.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="features-card">
+                  <data class="card-number" value="03">03</data>
+
+                  <h3 class="h3 card-title">Instant Result & Analysis</h3>
+
+                  <p class="card-text">
+                    Get instant scores, correct answers, and performance
+                    insights.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="features-card">
+                  <data class="card-number" value="04">04</data>
+
+                  <h3 class="h3 card-title">Timer Based Tests</h3>
+
+                  <p class="card-text">
+                    Real-time countdown timers to simulate actual exam
+                    environments.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="features-card">
+                  <data class="card-number" value="05">05</data>
+
+                  <h3 class="h3 card-title">Progress Tracking</h3>
+
+                  <p class="card-text">
+                    Track accuracy, attempts, and improvement over time.
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="features-card">
+                  <data class="card-number" value="06">06</data>
+
+                  <h3 class="h3 card-title">Mobile Friendly</h3>
+
+                  <p class="card-text">
+                    Fully responsive design to take quizzes on any device.
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- 
+        - #FAQ
+      -->
+
+        <section class="section faq" aria-label="frequently asked questions">
+          <div class="container">
+            <div class="title-wrapper">
+              <h2 class="h2 section-title">
+                Frequently Asked Questions About Our Quiz Platform
+              </h2>
+
+              <a href="./app/quiz.html" class="btn btn-primary">Start Quiz</a>
+            </div>
+
+            <ul class="grid-list">
+              <li>
+                <div class="faq-card">
+                  <button class="card-action" data-accordion-action>
+                    <h3 class="h3 card-title">
+                      01. How do I start a quiz on this platform?
+                    </h3>
+
+                    <div class="action-icon">
+                      <ion-icon name="add-outline" class="open"></ion-icon>
+                      <ion-icon name="remove-outline" class="close"></ion-icon>
+                    </div>
+                  </button>
+
+                  <div class="card-content">
+                    <p>
+                      Simply sign up or log in, choose your subject or topic,
+                      and click on the start quiz button. The quiz will begin
+                      instantly.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="faq-card">
+                  <button class="card-action" data-accordion-action>
+                    <h3 class="h3 card-title">
+                      02. Are the quizzes free or paid?
+                    </h3>
+
+                    <div class="action-icon">
+                      <ion-icon name="add-outline" class="open"></ion-icon>
+                      <ion-icon name="remove-outline" class="close"></ion-icon>
+                    </div>
+                  </button>
+
+                  <div class="card-content">
+                    <p>
+                      Most quizzes are free to attempt. Some premium or mock
+                      tests may require login or subscription access.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="faq-card">
+                  <button class="card-action" data-accordion-action>
+                    <h3 class="h3 card-title">
+                      03. Will I get results immediately after submission?
+                    </h3>
+
+                    <div class="action-icon">
+                      <ion-icon name="add-outline" class="open"></ion-icon>
+                      <ion-icon name="remove-outline" class="close"></ion-icon>
+                    </div>
+                  </button>
+
+                  <div class="card-content">
+                    <p>
+                      Yes. Once you submit the quiz, your score, correct
+                      answers, and performance analysis are displayed instantly.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="faq-card">
+                  <button class="card-action" data-accordion-action>
+                    <h3 class="h3 card-title">
+                      04. Are quizzes timer based like real exams?
+                    </h3>
+
+                    <div class="action-icon">
+                      <ion-icon name="add-outline" class="open"></ion-icon>
+                      <ion-icon name="remove-outline" class="close"></ion-icon>
+                    </div>
+                  </button>
+
+                  <div class="card-content">
+                    <p>
+                      Yes, many quizzes include a countdown timer to simulate
+                      real exam conditions and help improve time management
+                      skills.
+                    </p>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <div class="faq-card">
+                  <button class="card-action" data-accordion-action>
+                    <h3 class="h3 card-title">
+                      05. Can I track my quiz performance and progress?
+                    </h3>
+
+                    <div class="action-icon">
+                      <ion-icon name="add-outline" class="open"></ion-icon>
+                      <ion-icon name="remove-outline" class="close"></ion-icon>
+                    </div>
+                  </button>
+
+                  <div class="card-content">
+                    <p>
+                      Yes, your dashboard shows quiz history, scores, accuracy,
+                      and progress reports to help you improve continuously.
+                    </p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- 
+    - #FOOTER
+  -->
+
+    <footer class="footer">
+      <div class="footer-top section">
+        <div class="container">
+          <div class="footer-brand">
+            <a href="#" class="logo">QuizMaster</a>
+
+            <p class="footer-text">
+              Practice smarter with interactive quizzes, mock tests, and instant
+              performance analysis designed for students and professionals.
+            </p>
+
+            <form action="" class="newsletter-form">
+              <input
+                type="email"
+                name="email_address"
+                placeholder="Enter your email for updates"
+                required
+                class="email-field"
+              />
+
+              <button type="submit" class="form-btn">
+                <ion-icon name="paper-plane" aria-hidden="true"></ion-icon>
+              </button>
+            </form>
+          </div>
+
+          <ul class="footer-list">
+            <li>
+              <p class="footer-list-title">Quiz Features</p>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">MCQ Practice</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Mock Tests</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Timer Based Exams</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Instant Results</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Performance Analysis</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Certificates</a>
+            </li>
+          </ul>
+
+          <ul class="footer-list">
+            <li>
+              <p class="footer-list-title">Platform</p>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">About Us</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">All Quizzes</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Leaderboard</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Student Dashboard</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Blog & Tips</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-link">Contact Support</a>
+            </li>
+          </ul>
+
+          <ul class="footer-list">
+            <li>
+              <p class="footer-list-title">Contact Us</p>
+            </li>
+
+            <li class="footer-item">
+              <ion-icon name="location" aria-hidden="true"></ion-icon>
+              <address class="contact-link address">
+                Online Learning Hub, India
+              </address>
+            </li>
+
+            <li class="footer-item">
+              <ion-icon name="call" aria-hidden="true"></ion-icon>
+              <a href="tel:+919999999999" class="contact-link">
+                +91 99999 99999
+              </a>
+            </li>
+
+            <li class="footer-item">
+              <ion-icon name="mail" aria-hidden="true"></ion-icon>
+              <a href="mailto:support@quizmaster.com" class="contact-link">
+                support@quizmaster.com
+              </a>
+            </li>
+
+            <li class="footer-item">
+              <ul class="social-list">
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="#" class="social-link">
+                    <ion-icon name="logo-youtube"></ion-icon>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <p class="copyright">&copy; 2026 QuizMaster | All Rights Reserved</p>
+
+          <ul class="footer-bottom-list">
+            <li>
+              <a href="#" class="footer-bottom-link">Privacy Policy</a>
+            </li>
+
+            <li>
+              <a href="#" class="footer-bottom-link">Terms & Conditions</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 
+    - custom js link
+  -->
+    <script>
+      "use strict";
+
+      /**
+       * add event on element
+       */
+
+      const addEventOnElem = function (elem, type, callback) {
+        if (elem.length > 1) {
+          for (let i = 0; i < elem.length; i++) {
+            elem[i].addEventListener(type, callback);
+          }
+        } else {
+          elem.addEventListener(type, callback);
+        }
+      };
+
+      /**
+       * navbar toggle
+       */
+
+      const navbar = document.querySelector("[data-navbar]");
+      const navToggler = document.querySelectorAll("[data-nav-toggler]");
+      const overlay = document.querySelector("[data-overlay]");
+
+      const toggleNavbar = function () {
+        navbar.classList.toggle("active");
+        overlay.classList.toggle("active");
+      };
+
+      addEventOnElem(navToggler, "click", toggleNavbar);
+
+      /**
+       * close navbar when click on any navbar links
+       */
+
+      const navLinks = document.querySelectorAll("[data-nav-link]");
+
+      const closeNavbar = function () {
+        navbar.classList.remove("active");
+        overlay.classList.remove("active");
+      };
+
+      addEventOnElem(navLinks, "click", closeNavbar);
+
+      /**
+       * header active when scroll down
+       */
+
+      const header = document.querySelector("[data-header]");
+
+      const headerActive = function () {
+        window.scrollY > 100
+          ? header.classList.add("active")
+          : header.classList.remove("active");
+      };
+
+      addEventOnElem(window, "scroll", headerActive);
+
+      /**
+       * accordion toggle
+       */
+
+      const accordionAction = document.querySelectorAll(
+        "[data-accordion-action]"
+      );
+
+      const toggleAccordion = function () {
+        this.classList.toggle("active");
+      };
+
+      addEventOnElem(accordionAction, "click", toggleAccordion);
+    </script>
+
+    <!-- 
+    - ionicon link
+  -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
