@@ -1,262 +1,386 @@
 /* Importing Google fonts - Montserrat */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+:root {
+  --primary-color: #7d6aff;
+  --primary-hover: #6255d6;
+  --secondary-color: #5145BA;
+  --success-color: #00c851;
+  --error-color: #ff4444;
+  --bg-dark: #0f0c29;
+  --text-light: #f8f9fa;
+  --text-muted: #cdd6f4;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  
+  /* PHYSICS VARIABLES */
+  /* This curve creates a "Spring" pop effect */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); 
+  /* This curve is for smooth gliding */
+  --ease-smooth: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
+  user-select: none; 
+  -webkit-tap-highlight-color: transparent;
 }
+
 body {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #5145ba62;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  background-size: 300% 300%;
+  animation: cosmicFlow 20s ease infinite;
+  color: var(--text-light);
+  overflow: hidden;
+  position: relative;
 }
+
+@keyframes cosmicFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Floating Background Elements */
+body::before, body::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: var(--secondary-color);
+  filter: blur(150px);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.25;
+  animation: floatOrb 10s ease-in-out infinite alternate;
+}
+
+body::before { top: -10%; left: -10%; }
+body::after { bottom: -10%; right: -10%; animation-delay: -5s; background: #9b8fff; }
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(30px, 50px); }
+}
+
+/* ===========================
+   Popup Container
+   =========================== */
 .popup-container {
   position: fixed;
-  left: 0;
-  top: 0;
-  padding: 15px;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
   pointer-events: none;
-  transition: 0.2s ease;
+  transition: opacity 0.3s ease;
+  backdrop-filter: blur(12px);
+  background: rgba(15, 12, 41, 0.7);
+  z-index: 100;
+  padding: 1rem;
 }
+
 .popup-container.active {
   opacity: 1;
   pointer-events: auto;
 }
-.popup-container .quiz-box {
-  position: relative;
-  z-index: 5;
+
+/* ===========================
+   Glassmorphism Box
+   =========================== */
+.quiz-box {
+  width: 100%;
+  max-width: 550px;
+  background: rgba(30, 30, 46, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 24px;
+  box-shadow: var(--shadow-lg);
+  
+  /* The "Pop" Entrance */
+  transform: translateY(30px) scale(0.95);
+  transition: transform 0.5s var(--ease-spring), opacity 0.4s ease;
   opacity: 0;
-  pointer-events: none;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.13);
-  transform: translateY(-50px);
-  transition: all 0.4s ease-out;
 }
+
 .popup-container.active .quiz-box {
+  transform: translateY(0) scale(1);
   opacity: 1;
-  z-index: 10;
-  pointer-events: auto;
-  transform: translateY(0);
 }
-/* Quiz Configuration Stylings */
+
+/* ===========================
+   Configuration Screen
+   =========================== */
 .config-container {
-  z-index: 10;
-  width: 415px;
-  padding: 25px;
+  padding: 40px;
   text-align: center;
 }
-.config-container .config-title {
-  font-size: 1.31rem;
+
+.config-title {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 800;
+  margin-bottom: 25px;
+  background: linear-gradient(120deg, #fff, var(--primary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.config-container .config-option {
-  margin-top: 25px;
-}
+
 .config-option .option-title {
-  font-weight: 500;
-  font-size: 1.125rem;
-  margin-bottom: 20px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
 }
-.config-option .category-options {
+
+.category-options, .question-options {
   display: grid;
-  gap: 15px;
+  gap: 12px;
   grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 25px;
 }
 
 .config-option button {
-  padding: 12px;
-  font-size: 0.938rem;
-  color: #000;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  border-radius: 14px;
+  font-weight: 600;
   cursor: pointer;
-  font-weight: 500;
-  border-radius: 6px;
-  background: #fff;
-  border: 1px solid #9B8FFF;
-  transition: 0.3s ease;
-}
-.config-option button.active {
-  color: #5145BA;
-  border-color: #5145BA;
-  background: #dfdafd;
-}
-.config-option button:hover,
-.quiz-content .answer-option:hover {
-  background: #dad5fd;
+  
+  /* Smooth Transition */
+  transition: all 0.3s var(--ease-smooth);
+  position: relative;
+  overflow: hidden;
 }
 
-.config-container .start-quiz-btn,
-.quiz-footer .next-question-btn,
-.result-container .try-again-btn {
+.config-option button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-3px);
+  border-color: rgba(125, 106, 255, 0.5);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.config-option button:active {
+  transform: scale(0.95);
+}
+
+.config-option button.active {
+  background: var(--secondary-color);
   color: #fff;
-  border: none;
-  font-weight: 500;
-  background: #5145BA;
-  padding: 13px 25px;
-  cursor: pointer;
-  font-size: 1rem;
-  border-radius: 6px;
-  transition: background 0.3s ease;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 25px rgba(81, 69, 186, 0.4);
 }
-.config-container .start-quiz-btn {
-  margin-top: 30px;
-}
-.config-container .start-quiz-btn:hover,
-.quiz-footer .next-question-btn:hover,
-.result-container .try-again-btn:hover {
-  background: #403795;
-}
-/* Quiz Container Stylings */
-.quiz-container {
-  width: 480px;
-}
-.quiz-container .quiz-header {
+
+/* ===========================
+   Quiz Header & Content
+   =========================== */
+.quiz-header {
+  padding: 20px 30px;
   display: flex;
-  padding: 14px 25px;
-  align-items: center;
   justify-content: space-between;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.09);
+  align-items: center;
+  border-bottom: 1px solid var(--glass-border);
 }
-.quiz-header .quiz-title {
-  font-size: 1.43rem;
+
+.quiz-title {
+  font-size: 1.3rem;
   font-weight: 700;
 }
-.quiz-header .quiz-timer {
+
+.quiz-timer {
+  background: rgba(255, 87, 87, 0.15);
+  border: 1px solid rgba(255, 87, 87, 0.3);
+  color: #ff5f5f;
+  padding: 6px 14px;
+  border-radius: 30px;
   display: flex;
-  width: 70px;
-  color: #fff;
-  gap: 5px;
   align-items: center;
-  background: #32313C;
-  border-radius: 6px;
-  padding: 7px 9px;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.quiz-content { padding: 30px; }
+
+.question-text {
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
   font-weight: 600;
-  transition: 0.2s ease;
+  margin-bottom: 30px;
+  line-height: 1.5;
+  color: #fff;
 }
-.quiz-header .quiz-timer span {
-  font-size: 1.4rem;
-}
-.quiz-container .quiz-content {
-  padding: 20px 25px 25px;
-}
-.quiz-content .question-text {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-.quiz-content .answer-options {
-  list-style: none;
+
+.answer-options {
   display: flex;
-  gap: 15px;
-  margin-top: 20px;
   flex-direction: column;
+  gap: 12px;
+  list-style: none;
 }
-.quiz-content .answer-option {
-  display: flex;
+
+/* Answer Option - Staggered & Smooth */
+.answer-option {
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
   cursor: pointer;
-  align-items: center;
-  font-weight: 500;
-  border-radius: 6px;
-  padding: 13px 16px;
-  border: 1px solid #B5ACFF;
-  background: #F3F1FF;
-  justify-content: space-between;
-  transition: 0.3s ease;
-}
-.quiz-content .answer-option span {
-  display: block;
-  flex-shrink: 0;
-  margin: -4px -3px -4px 12px;
-}
-.quiz-content .answer-option.correct {
-  border-color: #B7E1C1;
-  background: #D4EDDA;
-  color: #155724;
-}
-.quiz-content .answer-option.correct span {
-  color: #16AE56;
-}
-.quiz-content .answer-option.incorrect {
-  border-color: #F4BEC3;
-  background: #F8D7DA;
-  color: #721C24;
-}
-.quiz-content .answer-option.incorrect span {
-  color: #F23723;
-}
-.quiz-container .quiz-footer {
-  padding: 15px 25px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #C6C6C6;
-}
-.quiz-footer .question-status {
-  font-weight: 500;
-}
-.quiz-footer .question-status b {
-  font-weight: 600;
-}
-.quiz-footer .next-question-btn {
-  display: inline-flex;
-  gap: 5px;
   align-items: center;
-  padding: 9px 17px;
+  
+  /* Key to smoothness: separate transform transition */
+  transition: transform 0.3s var(--ease-spring), 
+              background 0.3s ease, 
+              border-color 0.3s ease;
+              
+  position: relative;
+  
+  /* Entrance Animation Setup */
+  opacity: 0;
+  animation: fadeSlideUp 0.5s var(--ease-smooth) forwards;
 }
-/* Quiz Result Stylings */
+
+/* The Waterfall Effect (Short Delays) */
+.answer-option:nth-child(1) { animation-delay: 0.05s; }
+.answer-option:nth-child(2) { animation-delay: 0.1s; }
+.answer-option:nth-child(3) { animation-delay: 0.15s; }
+.answer-option:nth-child(4) { animation-delay: 0.2s; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.answer-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateX(6px) scale(1.01); /* Subtle grow and shift */
+}
+
+.answer-option:active {
+  transform: scale(0.97); /* Tactile press */
+  transition-duration: 0.1s; /* Instant reaction */
+}
+
+.answer-option.selected {
+  border-color: var(--primary-color);
+  background: rgba(81, 69, 186, 0.25);
+  box-shadow: 0 0 15px rgba(81, 69, 186, 0.2);
+}
+
+.answer-option.correct {
+  border-color: var(--success-color);
+  background: rgba(0, 200, 81, 0.2);
+  color: #2ed573;
+}
+
+.answer-option.incorrect {
+  border-color: var(--error-color);
+  background: rgba(255, 68, 68, 0.2);
+  color: #ff5f5f;
+}
+
+/* ===========================
+   Footer & Buttons
+   =========================== */
+.quiz-footer {
+  padding: 20px 30px;
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.question-status {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+.question-status b { color: #fff; }
+
+/* Interactive Buttons */
+.start-quiz-btn, 
+.next-question-btn, 
+.try-again-btn , .Back-btn {
+  background: var(--secondary-color);
+  color: white;
+  padding: 13px 28px;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-spring);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.start-quiz-btn:hover, 
+.Back-btn:hover, 
+.next-question-btn:hover, 
+.try-again-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-3px); /* Lift */
+  box-shadow: 0 8px 25px rgba(81, 69, 186, 0.5); /* Glow */
+}
+
+.start-quiz-btn:active, 
+.Back-btn:hover, 
+.next-question-btn:active, 
+.try-again-btn:active {
+  transform: translateY(0) scale(0.95); /* Press */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition-duration: 0.1s;
+}
+
+/* ===========================
+   Result Screen
+   =========================== */
 .result-container {
+  padding: 50px 30px;
   text-align: center;
-  padding: 40px;
-  width: 410px;
 }
-.result-container .result-img {
-  width: 110px;
+
+.result-title {
+  font-size: 2rem;
+  margin-bottom: 15px;
 }
-.result-container .result-title {
-  margin-top: 30px;
+
+.result-message {
+  font-size: 1.1rem;
+  color: var(--text-muted);
 }
-.result-container .result-message {
-  font-size: 1.125rem;
-  font-weight: 500;
-  margin-top: 15px;
+
+.result-message b {
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  display: block;
+  margin-top: 5px;
 }
-.result-container .result-message b {
-  font-weight: 700;
-  color: #5145BA;
-}
-.result-container .try-again-btn {
-  padding: 12px 20px;
-  margin-top: 30px;
-}
-/* Media query code for mobile screens */
-@media (max-width: 624px) {
-  .config-container,
-  .quiz-container .quiz-content {
-    padding: 20px;
-  }
-  .quiz-content .answer-option {
-    padding: 12px 10px 12px 14px;
-  }
- 
-  .quiz-container .quiz-header,
-  .quiz-container .quiz-footer {
-    padding: 13px 20px;
-  }
-  .quiz-header .quiz-title,
-  .quiz-content .question-text {
-    font-size: 1.3rem;
-  }
-  .result-container {
-    padding: 40px 20px;
-  }
-  .result-container .result-title {
-    font-size: 1.4rem;
-  }
+
+/* ===========================
+   Mobile Responsiveness
+   =========================== */
+@media (max-width: 600px) {
+  .popup-container { padding: 15px; }
+  .quiz-box { border-radius: 20px; }
+  .config-container, .quiz-content, .result-container { padding: 25px 20px; }
+  .category-options, .question-options { gap: 10px; }
+  .quiz-header, .quiz-footer { padding: 15px 20px; }
+  .answer-option { padding: 18px 20px; }
 }
