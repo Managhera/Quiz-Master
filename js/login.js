@@ -31,10 +31,12 @@ document
     const usernameInput = document.getElementById("regUser");
     const emailInput = document.getElementById("regEmail");
     const passInput = document.getElementById("regPass");
+    const confirmPassInput = document.getElementById("regConfirmPass");
 
     const username = usernameInput.value.trim();
     const email = emailInput.value.trim();
     const password = passInput.value.trim();
+    const confirmPassword = confirmPassInput.value.trim();
 
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -50,6 +52,10 @@ document
       showError(passInput, "Password must be at least 6 characters long.");
       return;
     }
+    if (password !== confirmPassword) {
+  showError(confirmPassInput, "Passwords do not match.");
+  return;
+}
 
     const user = { username, email, password };
     localStorage.setItem("user", JSON.stringify(user));
